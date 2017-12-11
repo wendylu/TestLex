@@ -7,13 +7,15 @@ I used Cocoapods and just added pod ‘AWSLex’ to my Podfile.
 
 2. Create a Lex Bot on the web interface. Follow the “Getting Started” section of the Lex documentation: http://docs.aws.amazon.com/lex/latest/dg/getting-started.html
 
-3. Once you have your Bot created, it’s time to create some Intents. An Intent is a particular goal the user wants to achieve. I’m making a hands free recipe interface that you control with your voice. I’d like to have my bot recognize “Next step” and “Previous step” to advance through the recipe. Create an Intent called “NextStep”.                                                       
+3. Once you have your Bot created, it’s time to create some Intents. An Intent is a particular goal the user wants to achieve. I’m making a hands free recipe interface that you control with your voice. I’d like to have my bot recognize “Next step” and “Previous step” to advance through the recipe. 
+
+Create an Intent called “NextStep”.                                                       
 
 Add some sample utterances to your intent. This is to let the bot know what user input it should look for. For the  NextStep intent, I added the following list of utterances: “Next Step”, “What’s next”, “Next”, and “Done”. 
 
 ![Image](https://github.com/wendylu/images/raw/master/Screen%20Shot%202017-12-09%20at%2011.37.31%20PM.png)
 
-These are just sample phrases, so even if a user says something that doesn’t match exactly, the intent should still be recognized (i.e. “Go to next step”). This is one of the coolest parts of this SDK, and what really made it worth using for me!
+These are just sample phrases, so even if a user says something that doesn’t match exactly, the intent should still be recognized (i.e. “Go to next step”). This is one of the coolest parts of this SDK, and what really made it worth using!
 
 Enter “Slots” if you need the user to provide additional information before the intent is fulfilled. We won’t do this in this example since we simply need to recognize “Next Step” and “Previous Step”.
 
@@ -29,13 +31,13 @@ Hit “Build” on the top right of the screen. You can then test out your Lex B
 
 ![Image](https://github.com/wendylu/images/raw/081fd9db6627ac4c3babaf35e469d787a8080cde/Screen%20Shot%202017-12-09%20at%2011.31.11%20PM.png)
 
-5. Next, we’ll connect our iOS app with our Lex Bot. AWS authentication can be a bit complex if you haven’t done it before. First, In the Amazon Cognito Console, select “Manage Federated Identities”
+5. Next, we’ll connect our iOS app to our Lex Bot. AWS authentication can be a bit complex if you haven’t done it before. First, In the [Amazon Cognito Console](https://console.aws.amazon.com/cognito/), select “Manage Federated Identities”
 
 6. Choose “Create a new identity pool”. Enter in the desired name for your identity pool, i.e. “TestLex”. 
 
 For testing, check “Enable access to unauthenticated identities”. This allows your app to assume the unauthenticated role associated with this identity pool. You can come back later and add a Authentication Provider if you only want to allow users to use Lex when logged in. This is most likely the best practice, but for testing, we’ll just use an unauthenticated role.
 
-7. In the next step, Cognito will setup two roles in Identity and Access Management (IAM). Here they are named “Cognito_TestLexAuth_Role” and “Cognito_TestLexUnauth_Role”. 
+7. In the next step, Cognito will setup two roles in [Identity and Access Management (IAM)](https://console.aws.amazon.com/iam/home). Here they are named “Cognito_TestLexAuth_Role” and “Cognito_TestLexUnauth_Role”. 
 
 ![Image](https://github.com/wendylu/images/raw/master/Screen%20Shot%202017-12-10%20at%2012.02.11%20AM.png)
 
@@ -43,7 +45,7 @@ These roles define what permissions and services your users can access. You can 
 
 8. We need to add Lex permission to the unauthenticated role.
 
-Create an IAM Policy in the IAM Console. In the creation flow, select “Service” and add the Lex Service. 
+Create an IAM Policy in the [IAM Console](https://console.aws.amazon.com/iam/home#policies). In the creation flow, select “Service” and add the Lex Service. 
 
 Select “All Lex Actions” under Actions
 
@@ -55,7 +57,7 @@ Under Resources, select “All Resources”
 
 Review and create the policy.
 
-9. Go to “Roles” on the sidebar of the IAM Console. Click on the unauthenticated role of your identify pool (Cognito_TestLexUnauth_Role) and attach the policy you just created to the role.
+9. Go to “Roles” on the sidebar of the [IAM Console](https://console.aws.amazon.com/iam/home#/roles). Click on the unauthenticated role of your identify pool (Cognito_TestLexUnauth_Role) and attach the policy you just created to the role.
 
 10. Under “Sample code” in your identity pool page, you can see how to initialize your credentials on various platforms. Copy the Objective C or Swift version of the code and add it to your AppDelegate. We are *finally* ready to start writing iOS code!
 
