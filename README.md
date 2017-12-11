@@ -127,7 +127,7 @@ In the viewDidAppear method of my main view controller, I get the interaction ki
 }
 ```
 
-11. Error handling: When Lex doesn’t recognize an input, it will output a clarification phrase. The default is “Sorry, can you please repeat that?”. You can configure this phrase, as well as the max number of retries, in “Error handling” section on the web console.
+15. Error handling: When Lex doesn’t recognize an input, it will output a clarification phrase. The default is “Sorry, can you please repeat that?”. You can configure this phrase, as well as the max number of retries, in “Error handling” section on the web console.
 
 Lex only allows 5 maximum retries until it hangs up and stops listening. I wanted to keep listening until I received a valid utterance, so I set both the Clarification Prompt and Hang-up Phrase to “Listening”
 
@@ -142,7 +142,7 @@ And then restarted listening on interactionKit:onError, which gets called when L
 }
 ```
 
-12. Implement the following delegate method to resume listening when Lex finishes speaking:
+16. Implement the following delegate method to resume listening when Lex finishes speaking:
 
 ```objective-c
 - (void)interactionKit:(AWSLexInteractionKit *)interactionKit
@@ -156,7 +156,7 @@ And then restarted listening on interactionKit:onError, which gets called when L
 }
 ```
 
-13.  When Lex has recognized the utterance and is ready to fulfill the intent, the following method will be called. We can then use the intentName and the slots dictionary for our app’s business logic. 
+17.  When Lex has recognized the utterance and is ready to fulfill the intent, the following method will be called. We can then use the intentName and the slots dictionary for our app’s business logic. 
 
 ```objective-c
 - (void)interactionKit:(AWSLexInteractionKit *)interactionKit onDialogReadyForFulfillmentForIntent:(NSString *)intentName slots:(NSDictionary *)slots
