@@ -1,6 +1,6 @@
 # TestLex
 
-Amazon Lex is a service for building conversational interfaces into apps using voice and text. I recently integrated Lex into our iOS app as a part of a Hackathon project and realized how abysmal the docs are :( Here’s a Quick Start guide to help others like me who haven’t had much experience integrating with AWS in the past. 
+Amazon Lex is a service for building conversational interfaces into apps using voice and text. I recently integrated Lex into our iOS app as a part of a hackathon project and spent quite a bit of time digging through issues that were not in the docs :) Here’s a Quick Start guide to help others like me who haven’t had much experience integrating with AWS in the past. 
 
 1. Add the Lex SDK into you iOS app: http://docs.aws.amazon.com/mobile/sdkforios/developerguide/setup-aws-sdk-for-ios.html.
 I used Cocoapods and just added pod ‘AWSLex’ to my Podfile.
