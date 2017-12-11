@@ -45,7 +45,7 @@ These roles define what permissions and services your users can access. You can 
 
 8. We need to add Lex permission to the unauthenticated role.
 
-Create an IAM Policy in the [IAM Console](https://console.aws.amazon.com/iam/home#policies). In the creation flow, select “Service” and add the Lex Service. 
+Create an IAM Policy in the [IAM Console](https://console.aws.amazon.com/iam/home#policies). In the creation flow, select “Service” and choose the Lex service. 
 
 Select “All Lex Actions” under Actions
 
@@ -59,7 +59,7 @@ Review and create the policy.
 
 9. Go to “Roles” on the sidebar of the [IAM Console](https://console.aws.amazon.com/iam/home#/roles). Click on the unauthenticated role of your identify pool (Cognito_TestLexUnauth_Role) and attach the policy you just created to the role.
 
-10. Under “Sample code” in your identity pool page, you can see how to initialize your credentials on various platforms. Copy the Objective C or Swift version of the code and add it to your AppDelegate. We are *finally* ready to start writing iOS code!
+10. Go back to the [Cognito](https://console.aws.amazon.com/cognito/) console. Under “Sample code” in your identity pool page, you can see how to initialize your credentials on various platforms. Copy the Objective C or Swift version of the code and add it to your AppDelegate. We are *finally* ready to start writing iOS code!
 
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -78,7 +78,7 @@ Review and create the policy.
 }
 ```
 
-11. Also in application:didFinishLaunchingWithOptions:, initialize the interaction kit for your bot. You can set the bot alias by clicking “Publish” on the Bot page, and find existing aliases with “Settings”->”Aliases”.
+11. Also in application:didFinishLaunchingWithOptions:, initialize the interaction kit for your bot. You can set the bot alias when clicking “Publish” on the Bot page, and find existing aliases with “Settings”->”Aliases”.
 
 ![Image](https://github.com/wendylu/images/raw/master/Screen%20Shot%202017-12-10%20at%206.37.07%20PM.png)
 
@@ -112,10 +112,10 @@ In the viewDidAppear method of my main view controller, I get the interaction ki
 }
 ```
 
-13. Set a NSMicrophoneUsageDescription in your Info.plist.
+13. Set a NSMicrophoneUsageDescription in your Info.plist to request microphone access.
 
 14. There are various delegate methods on AWSLexMicrophoneDelegate
-, AWSLexAudioPlayerDelegate, and AWSLexInteractionDelegate that you can hook into. For example, we can use the following delegate methods to show a loading state while Lex is speaking to us.
+, AWSLexAudioPlayerDelegate, and AWSLexInteractionDelegate that we can hook into. For example, we can use the following delegate methods to show a loading state while Lex is speaking to us.
 
 ```objective-c
 - (void)interactionKitOnAudioPlaybackStarted:(AWSLexInteractionKit *)interactionKit
@@ -131,11 +131,11 @@ In the viewDidAppear method of my main view controller, I get the interaction ki
 
 15. Error handling: When Lex doesn’t recognize an input, it will output a clarification phrase. The default is “Sorry, can you please repeat that?”. You can configure this phrase, as well as the max number of retries, in “Error handling” section on the web console.
 
-Lex only allows 5 maximum retries until it hangs up and stops listening. I wanted to keep listening until I received a valid utterance, so I set both the Clarification Prompt and Hang-up Phrase to “Listening”
+Lex only allows 5 maximum retries until it hangs up and stops listening. I want to keep listening until I receive a valid utterance, so I set both the Clarification Prompt and Hang-up Phrase to “Listening”
 
 ![Image](https://github.com/wendylu/images/raw/master/Screen%20Shot%202017-12-10%20at%209.24.07%20PM.png)
 
-And then restarted listening on interactionKit:onError, which gets called when Lex hangs up.
+And then restart listening on interactionKit:onError, which gets called when Lex hangs up.
 
 ```objective-c
 - (void)interactionKit:(AWSLexInteractionKit *)interactionKit onError:(NSError *)error
