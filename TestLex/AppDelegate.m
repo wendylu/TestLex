@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <AWSLex/AWSLexInteractionKit.h>
+
 @interface AppDelegate ()
 
 @end
@@ -16,7 +18,25 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // Initialize the Amazon Cognito credentials provider
+
+    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
+                                                          initWithRegionType:AWSRegionUSEast1
+                                                          identityPoolId:@"your-pool-id"];
+
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
+
+    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+
+    AWSLexInteractionKitConfig *config = [AWSLexInteractionKitConfig defaultInteractionKitConfigWithBotName:@"RecipeBot" botAlias:@"Prod"];
+    // 5000 seconds before timeout
+    config.noSpeechTimeoutInterval = 5000;
+    config.maxSpeechTimeoutInterval = 5000;
+
+    // We will use this key to retrieve the interaction kit in our view controller
+    [AWSLexInteractionKit registerInteractionKitWithServiceConfiguration:configuration interactionKitConfiguration:config forKey:@"USEast1InteractionKit"];
+
+
     return YES;
 }
 

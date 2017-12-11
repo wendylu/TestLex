@@ -8,22 +8,75 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+#import <AWSLex/AWSLexInteractionKit.h>
 
+@interface ViewController () <AWSLexInteractionDelegate, AWSLexMicrophoneDelegate, AWSLexAudioPlayerDelegate>
+@property (nonatomic, strong) AWSLexInteractionKit *interactionKit;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.hidesWhenStopped = YES;
+    [self.view addSubview:self.spinner];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.spinner.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+    self.spinner.center = self.view.center;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    self.interactionKit = [AWSLexInteractionKit interactionKitForKey:@"USEast1InteractionKit"];
+    self.interactionKit.microphoneDelegate = self;
+    self.interactionKit.audioPlayerDelegate = self;
+    self.interactionKit.interactionDelegate = self;
+    [self.interactionKit audioInAudioOut];
+
+}
+
+#pragma mark AWSLexAudioPlayerDelegate
+
+- (void)interactionKitOnAudioPlaybackStarted:(AWSLexInteractionKit *)interactionKit
+{
+    [self.spinner startAnimating];
+}
+
+- (void)interactionKitOnAudioPlaybackFinished:(AWSLexInteractionKit *)interactionKit
+{
+    [self.spinner stopAnimating];
+}
+
+#pragma mark AWSLexInteractionDelegate
+
+- (void)interactionKit:(AWSLexInteractionKit *)interactionKit onError:(NSError *)error
+{
+    [self.interactionKit audioInAudioOut];
+}
+
+- (void)interactionKit:(AWSLexInteractionKit *)interactionKit onDialogReadyForFulfillmentForIntent:(NSString *)intentName slots:(NSDictionary *)slots
+{
+    NSLog(@"Intent fulfilled: %@", intentName); // logs “Intent fulfilled: NextStep” or “Intent fulfilled: PreviousStep”
+}
+
+- (void)interactionKit:(AWSLexInteractionKit *)interactionKit
+       switchModeInput:(AWSLexSwitchModeInput *)switchModeInput
+      completionSource:(AWSTaskCompletionSource<AWSLexSwitchModeResponse *> *)completionSource
+{
+    AWSLexSwitchModeResponse *switchModeResponse = [AWSLexSwitchModeResponse new];
+    [switchModeResponse setInteractionMode:AWSLexInteractionModeSpeech];
+    [switchModeResponse setSessionAttributes:switchModeResponse.sessionAttributes];
+    [completionSource setResult:switchModeResponse];
+}
 
 @end

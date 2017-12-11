@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		955F25E181BD6E3577591B95 /* libPods-TestLex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 382A71FA9FC8B19B2CBA4376 /* libPods-TestLex.a */; };
 		A2864FD71FDE28490027615E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2864FD61FDE28490027615E /* AppDelegate.m */; };
 		A2864FDA1FDE28490027615E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2864FD91FDE28490027615E /* ViewController.m */; };
 		A2864FDD1FDE28490027615E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2864FDB1FDE28490027615E /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		382A71FA9FC8B19B2CBA4376 /* libPods-TestLex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestLex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70E4DB51D161CA303FC4F006 /* Pods-TestLex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestLex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestLex/Pods-TestLex.debug.xcconfig"; sourceTree = "<group>"; };
 		A2864FD21FDE28490027615E /* TestLex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestLex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2864FD51FDE28490027615E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2864FD61FDE28490027615E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		A2864FF51FDE28490027615E /* TestLexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestLexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2864FF91FDE28490027615E /* TestLexUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestLexUITests.m; sourceTree = "<group>"; };
 		A2864FFB1FDE28490027615E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADDE928C994E2C4996DF20AB /* Pods-TestLex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestLex.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestLex/Pods-TestLex.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				955F25E181BD6E3577591B95 /* libPods-TestLex.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		528C52F644CA8C095B22E7C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70E4DB51D161CA303FC4F006 /* Pods-TestLex.debug.xcconfig */,
+				ADDE928C994E2C4996DF20AB /* Pods-TestLex.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5519E2CD4F492B6E66DFAC5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				382A71FA9FC8B19B2CBA4376 /* libPods-TestLex.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A2864FC91FDE28490027615E = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +107,8 @@
 				A2864FED1FDE28490027615E /* TestLexTests */,
 				A2864FF81FDE28490027615E /* TestLexUITests */,
 				A2864FD31FDE28490027615E /* Products */,
+				528C52F644CA8C095B22E7C1 /* Pods */,
+				5519E2CD4F492B6E66DFAC5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,9 +163,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A2864FFE1FDE28490027615E /* Build configuration list for PBXNativeTarget "TestLex" */;
 			buildPhases = (
+				B6525B9DFFEBD4011A702CE7 /* [CP] Check Pods Manifest.lock */,
 				A2864FCE1FDE28490027615E /* Sources */,
 				A2864FCF1FDE28490027615E /* Frameworks */,
 				A2864FD01FDE28490027615E /* Resources */,
+				A9E7149A0E8751D7555B3C67 /* [CP] Embed Pods Frameworks */,
+				74CA528DFD7504192384BFF1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +286,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		74CA528DFD7504192384BFF1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestLex/Pods-TestLex-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9E7149A0E8751D7555B3C67 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestLex/Pods-TestLex-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6525B9DFFEBD4011A702CE7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A2864FCE1FDE28490027615E /* Sources */ = {
@@ -428,9 +503,11 @@
 		};
 		A2864FFF1FDE28490027615E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70E4DB51D161CA303FC4F006 /* Pods-TestLex.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WWXN5CHGLS;
 				INFOPLIST_FILE = TestLex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tatertot.TestLex;
@@ -441,9 +518,11 @@
 		};
 		A28650001FDE28490027615E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADDE928C994E2C4996DF20AB /* Pods-TestLex.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WWXN5CHGLS;
 				INFOPLIST_FILE = TestLex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tatertot.TestLex;

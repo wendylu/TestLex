@@ -1,0 +1,2 @@
+target 'TestLex'
+pod ‘AWSLex’
