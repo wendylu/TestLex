@@ -31,7 +31,7 @@ Hit “Build” on the top right of the screen. You can then test out your Lex B
 
 ![Image](https://github.com/wendylu/images/raw/081fd9db6627ac4c3babaf35e469d787a8080cde/Screen%20Shot%202017-12-09%20at%2011.31.11%20PM.png)
 
-5. Next, we’ll connect our iOS app to our Lex Bot. AWS authentication can be a bit complex if you haven’t done it before. First, In the [Amazon Cognito Console](https://console.aws.amazon.com/cognito/), select “Manage Federated Identities”
+5. Next, we’ll connect our iOS app to our Lex Bot. AWS authentication can be a bit complex if you haven’t done it before. First, In the [Amazon Cognito Console](https://console.aws.amazon.com/cognito/), select “Manage Identity Pools”
 
 6. Choose “Create a new identity pool”. Enter in the desired name for your identity pool, i.e. “TestLex”. 
 
