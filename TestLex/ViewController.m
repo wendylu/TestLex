@@ -75,7 +75,7 @@
 {
     AWSLexSwitchModeResponse *switchModeResponse = [AWSLexSwitchModeResponse new];
     [switchModeResponse setInteractionMode:AWSLexInteractionModeSpeech];
-    [switchModeResponse setSessionAttributes:switchModeResponse.sessionAttributes];
+    [switchModeResponse setSessionAttributes:switchModeInput.sessionAttributes];
     [completionSource setResult:switchModeResponse];
 }
 
